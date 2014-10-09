@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors        = ["Job King'ori Maina"]
   spec.email          = ['j@kingori.co']
   spec.homepage       = 'http://itsmrwave.github.io/annotator-store'
-  spec.summary        = 'Rails engine to implement a backend store for [Annotator]'
-  spec.description    = 'Rails engine to implement a backend store for [Annotator]'
+  spec.summary        = 'Rails engine to implement a Ruby backend store implementation for Annotator.'
+  spec.description    = 'Rails engine to implement a Ruby backend store implementation for Annotator, an open-source JavaScript library to easily add annotation functionality to any webpage.'
   spec.license        = 'MIT'
 
   spec.files          = Dir['{app,config,db,lib}/**/*', 'LICENSE.md', 'Rakefile', 'README.md']
