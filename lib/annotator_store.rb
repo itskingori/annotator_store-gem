@@ -1,4 +1,4 @@
-require "annotator_store/engine"
+require 'annotator_store/engine'
 
 module AnnotatorStore
 end

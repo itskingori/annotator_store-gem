@@ -1,15 +1,15 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
+require 'sprockets/railtie'
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "annotator_store"
+require 'annotator_store'
 
 module Dummy
   class Application < Rails::Application
@@ -26,4 +26,3 @@ module Dummy
     # config.i18n.default_locale = :de
   end
 end
-

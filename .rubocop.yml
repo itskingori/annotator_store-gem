@@ -1,0 +1,10 @@
+# RuboCop is a Ruby static code analyzer. Out of the box it will enforce many of
+# the guidelines outlined in the community Ruby Style Guide here;
+# https://github.com/bbatsov/ruby-style-guide
+#
+# See also; https://github.com/bbatsov/rubocop
+
+inherit_from: .rubocop_todo.yml
+
+Metrics/LineLength:
+  Max: 124
