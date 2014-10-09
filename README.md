@@ -1,7 +1,8 @@
 Annotator Store
 ===============
 
-Rails engine to implement a backend store for [Annotator][annotator].
+Rails engine to implement a Ruby backend store implementation for
+[Annotator][annotator].
 
 In case you were wondering:
 
