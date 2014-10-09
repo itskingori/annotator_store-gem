@@ -17,6 +17,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.3'
 
   spec.add_development_dependency 'pg'
+  spec.add_development_dependency 'json-schema', '>= 2.2.5'
   spec.add_development_dependency 'rails', '~> 4.1.6'
   spec.add_development_dependency 'rspec-rails', '>= 3.0.0'
 
