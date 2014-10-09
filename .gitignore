@@ -6,8 +6,11 @@
 /spec/dummy/log/*.log
 /spec/dummy/tmp/
 
-# Gem #
+## Gem
 /log/*
 /pkg/*
 /tmp/*
 Gemfile.lock
+
+## Ruby
+.ruby-version
