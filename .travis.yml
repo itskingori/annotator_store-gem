@@ -5,4 +5,8 @@ rvm:
   - '2.1.0'
   - '2.0.0'
   - '1.9.3'
+addons:
+  postgresql: '9.3'
+before_script:
+  - psql -c 'create database dummy_astore_test;' -U dummy
 script: 'cd spec/dummy/ && bundle exec rspec spec'
