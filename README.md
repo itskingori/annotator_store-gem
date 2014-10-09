@@ -1,8 +1,8 @@
 Annotator Store
 ===============
 
-[![Gem Version](https://badge.fury.io/rb/annotator-store.svg)](http://badge.fury.io/rb/annotator-store)
-[![Build Status](https://travis-ci.org/itsmrwave/annotator-store.svg?branch=master)](https://travis-ci.org/itsmrwave/annotator-store)
+[![Gem Version](https://badge.fury.io/rb/annotator-store.svg)][5]
+[![Build Status](https://travis-ci.org/itsmrwave/annotator-store.svg?branch=master)][13]
 
 Rails engine to implement a Ruby backend store implementation for
 [Annotator][annotator].
@@ -59,6 +59,31 @@ You can see what the engine has so far by running `rails server` in `spec/dummy`
 and then browse to `http://localhost:3000/`.
 
 
+Testing
+-------
+
+You may extend the dummy application by generating controllers, models or views
+from within the directory (`spec/dummy`), and then use those to test our engine.
+Use the rspec command to run your specs.
+
+
+```
+=> Change directory to dummy application
+$ cd spec/dummy/
+
+=> Run all specs
+$ bundle exec rspec
+
+=> Run only model specs example ...
+$ bundle exec rspec spec/models
+
+=> Run only specs for AnnotationsController ...
+$ bundle exec rspec spec/controllers/annotations_controller_spec.rb
+```
+
+Testing is also [automated on Travis-CI][13].
+
+
 Versioning
 ----------
 
@@ -110,3 +135,4 @@ they want as long as they provide attribution and waive liability.
 [10]: http://docs.annotatorjs.org/en/v1.2.x/storage.html
 [11]: http://docs.annotatorjs.org/en/v1.2.x/plugins/store.html
 [12]: https://github.com/itsmrwave/annotator-store/graphs/contributors
+[13]: https://travis-ci.org/itsmrwave/annotator-store
