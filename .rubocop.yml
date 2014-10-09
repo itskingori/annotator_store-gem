@@ -6,6 +6,9 @@
 
 inherit_from: .rubocop_todo.yml
 
+AllCops:
+  RunRailsCops: true
+
 Metrics/LineLength:
   Max: 124
 
