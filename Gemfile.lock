@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    annotator_store (0.0.1)
-      rails (~> 4.1.6)
+    annotator-store (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -88,5 +87,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotator_store!
+  annotator-store!
   pg
+  rails (~> 4.1.6)
