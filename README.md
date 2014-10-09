@@ -2,6 +2,7 @@ Annotator Store
 ===============
 
 [![Gem Version](https://badge.fury.io/rb/annotator-store.svg)](http://badge.fury.io/rb/annotator-store)
+[![Build Status](https://travis-ci.org/itsmrwave/annotator-store.svg?branch=master)](https://travis-ci.org/itsmrwave/annotator-store)
 
 Rails engine to implement a Ruby backend store implementation for
 [Annotator][annotator].
