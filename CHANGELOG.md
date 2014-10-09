@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v0.1.0
+------
+
+* Create index page with description of API.
+
 
 v0.0.1
 ------
