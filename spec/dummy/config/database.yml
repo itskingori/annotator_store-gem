@@ -23,25 +23,25 @@ default: &default
 
 development:
   <<: *default
-  database: dummy_development
+  database: dummy_astore_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: dummy
+  username: dummy
 
   # The password associated with the postgres role (username).
-  #password:
+  password: dummy_password
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: dummy_test
+  database: dummy_astore_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: dummy_production
+  database: dummy_astore_production
   username: dummy
-  password: <%= ENV['DUMMY_DATABASE_PASSWORD'] %>
+  password: dummy_password
+  host: localhost
+  port: 5432

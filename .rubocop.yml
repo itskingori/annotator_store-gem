@@ -8,3 +8,7 @@ inherit_from: .rubocop_todo.yml
 
 Metrics/LineLength:
   Max: 124
+
+Style/StringLiterals:
+  Exclude:
+    - 'spec/dummy/db/schema.rb'
