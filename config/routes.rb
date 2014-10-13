@@ -7,5 +7,5 @@ AnnotatorStore::Engine.routes.draw do
   get 'search', to: 'pages#search'
 
   # Annotations Endpoint
-  resources :annotations, only: [:create, :show, :update, :destroy]
+  resources :annotations, only: [:create, :show, :update, :destroy], defaults: { format: :json }, constraints: { format: :json }
 end
