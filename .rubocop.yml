@@ -10,7 +10,20 @@ AllCops:
   RunRailsCops: true
 
 Metrics/LineLength:
-  Max: 124
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 7
+  Exclude:
+    - 'spec/dummy/db/schema.rb'
+
+Style/SingleSpaceBeforeFirstArg:
+  Exclude:
+    - 'spec/dummy/db/schema.rb'
+
+Style/SpecialGlobalVars:
+  Exclude:
+    - 'annotator_store.gemspec'
 
 Style/StringLiterals:
   Exclude:
