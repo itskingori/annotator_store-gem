@@ -14,7 +14,7 @@ module AnnotatorStore
           uri: 'http://example.com',
           ranges: '{}'
         }
-        post annotator_store.annotations_path, { annotation: valid_attributes }
+        post annotator_store.annotations_path, annotation: valid_attributes
       end
     end
 
@@ -28,7 +28,7 @@ module AnnotatorStore
     describe 'PUT /annotations/1' do
       it 'returns response status 200' do
         valid_attributes = { version: 'v1.1' }
-        put annotator_store.annotation_path(annotation), { annotation: valid_attributes }
+        put annotator_store.annotation_path(annotation), annotation: valid_attributes
       end
     end
 
