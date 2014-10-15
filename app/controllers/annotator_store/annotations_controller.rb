@@ -9,7 +9,7 @@ module AnnotatorStore
       @annotation = Annotation.new(annotation_params)
       respond_to do |format|
         if @annotation.save
-          format.json { render :show, status: :created, location: annotation_url(@annotation) }
+          format.json { render :show, status: :see_other, location: annotation_url(@annotation) }
         else
           format.json { render json: @annotation.errors, status: :unprocessable_entity }
         end
@@ -24,7 +24,7 @@ module AnnotatorStore
     def update
       respond_to do |format|
         if @annotation.update(annotation_params)
-          format.json { render :show, status: :ok, location: annotation_url(@annotation) }
+          format.json { render :show, status: :see_other, location: annotation_url(@annotation) }
         else
           format.json { render json: @annotation.errors, status: :unprocessable_entity }
         end
@@ -35,7 +35,14 @@ module AnnotatorStore
     def destroy
       @annotation.destroy
       respond_to do |format|
-        format.json { head :no_content }
+        format.json { head :no_content, status: :no_content }
+      end
+    end
+
+    # OPTIONS /annotations
+    def options
+      respond_to do |format|
+        format.json { render :options }
       end
     end
 
