@@ -15,9 +15,9 @@ module AnnotatorStore
     end
 
     describe 'POST /annotations' do
-      it 'returns response status 303' do
+      it 'returns response status 200' do
         post annotator_store.annotations_path, annotation: valid_attributes
-        expect(response).to have_http_status(303)
+        expect(response).to have_http_status(200)
       end
 
       # it 'sets redirect location to read point url' do
@@ -34,10 +34,10 @@ module AnnotatorStore
     end
 
     describe 'PUT /annotations/1' do
-      it 'returns response status 303' do
+      it 'returns response status 200' do
         update_attributes = { version: 'v1.1' }
         put annotator_store.annotation_path(annotation), annotation: update_attributes
-        expect(response).to have_http_status(303)
+        expect(response).to have_http_status(200)
       end
 
       it 'sets redirect location to read point url' do
