@@ -37,7 +37,7 @@ module AnnotatorStore
     end
 
     let(:invalid_attributes) do
-      skip('Add a hash of attributes invalid for your model')
+      skip('Add a hash of attributes invalid for our model')
     end
 
     # This should return the minimal set of values that should be in the session
@@ -54,90 +54,67 @@ module AnnotatorStore
       end
     end
 
-    # describe 'POST create' do
-    #   describe 'with valid params' do
-    #     it 'creates a new Annotation' do
-    #       action = post :create, { annotation: valid_attributes }, valid_session
-    #       expect { action }.to change(Annotation, :count).by(1)
-    #     end
+    describe 'POST create' do
+      describe 'with valid params' do
+        # it 'creates a new AnnotatorStore::Annotation' do
+        #   action = post :create, { annotation: valid_attributes, format: :json }, valid_session
+        #   expect { action }.to change(AnnotatorStore::Annotation, :count).by(1)
+        # end
 
-    #     it 'assigns a newly created annotation as @annotation' do
-    #       post :create, { annotation: valid_attributes }, valid_session
-    #       expect(assigns(:annotation)).to be_a(Annotation)
-    #       expect(assigns(:annotation)).to be_persisted
-    #     end
+        it 'assigns a newly created annotation as @annotation' do
+          post :create, { annotation: valid_attributes, format: :json }, valid_session
+          expect(assigns(:annotation)).to be_a(AnnotatorStore::Annotation)
+          expect(assigns(:annotation)).to be_persisted
+        end
+      end
 
-    #     it 'redirects to the created annotation' do
-    #       post :create, { annotation: valid_attributes }, valid_session
-    #       expect(response).to redirect_to(Annotation.last)
-    #     end
-    #   end
-
-    #   describe 'with invalid params' do
+      describe 'with invalid params' do
     #     it 'assigns a newly created but unsaved annotation as @annotation' do
     #       post :create, { annotation: invalid_attributes }, valid_session
     #       expect(assigns(:annotation)).to be_a_new(Annotation)
     #     end
+      end
+    end
 
-    #     it "re-renders the 'new' template" do
-    #       post :create, { annotation: invalid_attributes }, valid_session
-    #       expect(response).to render_template('new')
-    #     end
-    #   end
-    # end
+    describe 'PUT update' do
+      describe 'with valid params' do
+        let(:new_attributes) do
+          {
+            version: 'new value',
+            text: 'new value',
+            quote: 'new value',
+            uri: 'new value',
+            ranges: '{}'
+          }
+        end
 
-    # describe 'PUT update' do
-    #   describe 'with valid params' do
-    #     let(:new_attributes) do
-    #       skip('Add a hash of attributes valid for your model')
-    #     end
+        # it 'updates the requested annotation' do
+        #   put :update, { id: annotation.to_param, annotation: new_attributes, format: :json }, valid_session
+        #   annotation.reload
+        #   expect(annotation.version).to eq('new value')
+        #   expect(annotation.text).to eq('new value')
+        #   expect(annotation.quote).to eq('new value')
+        #   expect(annotation.uri).to eq('new value')
+        # end
 
-    #     it 'updates the requested annotation' do
-    #       annotation = Annotation.create! valid_attributes
-    #       put :update, { id: annotation.to_param, annotation: new_attributes }, valid_session
-    #       annotation.reload
-    #       skip('Add assertions for updated state')
-    #     end
+        it 'assigns the requested annotation as @annotation' do
+          put :update, { id: annotation.to_param, annotation: valid_attributes, format: :json }, valid_session
+          expect(assigns(:annotation)).to eq(annotation)
+        end
+      end
 
-    #     it 'assigns the requested annotation as @annotation' do
-    #       annotation = Annotation.create! valid_attributes
-    #       put :update, { id: annotation.to_param, annotation: valid_attributes }, valid_session
-    #       expect(assigns(:annotation)).to eq(annotation)
-    #     end
-
-    #     it 'redirects to the annotation' do
-    #       annotation = Annotation.create! valid_attributes
-    #       put :update, { id: annotation.to_param, annotation: valid_attributes }, valid_session
-    #       expect(response).to redirect_to(annotation)
-    #     end
-    #   end
-
-    #   describe 'with invalid params' do
-    #     it 'assigns the annotation as @annotation' do
-    #       annotation = Annotation.create! valid_attributes
-    #       put :update, { id: annotation.to_param, annotation: invalid_attributes }, valid_session
-    #       expect(assigns(:annotation)).to eq(annotation)
-    #     end
-
-    #     it "re-renders the 'edit' template" do
-    #       annotation = Annotation.create! valid_attributes
-    #       put :update, { id: annotation.to_param, annotation: invalid_attributes }, valid_session
-    #       expect(response).to render_template('edit')
-    #     end
-    #   end
-    # end
+      # describe 'with invalid params' do
+      #   it 'assigns the annotation as @annotation' do
+      #     put :update, { id: annotation.to_param, annotation: invalid_attributes }, valid_session
+      #     expect(assigns(:annotation)).to eq(annotation)
+      #   end
+      # end
+    end
 
     # describe 'DELETE destroy' do
     #   it 'destroys the requested annotation' do
-    #     annotation = Annotation.create! valid_attributes
-    #     action = delete :destroy, { id: annotation.to_param }, valid_session
-    #     expect { action }.to change(Annotation, :count).by(-1)
-    #   end
-
-    #   it 'redirects to the annotations list' do
-    #     annotation = Annotation.create! valid_attributes
-    #     delete :destroy, { id: annotation.to_param }, valid_session
-    #     expect(response).to redirect_to(annotations_url)
+    #     action = delete :destroy, { id: annotation.to_param, format: :json }, valid_session
+    #     expect { action }.to change(AnnotatorStore::Annotation, :count).by(-1)
     #   end
     # end
   end
