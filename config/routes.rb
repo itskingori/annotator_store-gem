@@ -4,8 +4,10 @@ AnnotatorStore::Engine.routes.draw do
   root 'pages#index', defaults: { format: :json }
 
   # Search
-  get 'search', to: 'pages#search'
+  match 'search', to: 'pages#search', via: [:get], defaults: { format: :json }, constraints: { format: :json }
 
   # Annotations Endpoint
-  resources :annotations, only: [:create, :show, :update, :destroy], defaults: { format: :json }, constraints: { format: :json }
+  resources :annotations, only: [:create, :show, :update, :destroy], defaults: { format: :json }, constraints: { format: :json } do
+    match '/', to: 'annotations#options', via: [:options], on: :collection
+  end
 end
