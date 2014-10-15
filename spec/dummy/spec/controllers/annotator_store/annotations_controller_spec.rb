@@ -69,10 +69,10 @@ module AnnotatorStore
       end
 
       describe 'with invalid params' do
-    #     it 'assigns a newly created but unsaved annotation as @annotation' do
-    #       post :create, { annotation: invalid_attributes }, valid_session
-    #       expect(assigns(:annotation)).to be_a_new(Annotation)
-    #     end
+        # it 'assigns a newly created but unsaved annotation as @annotation' do
+        #   post :create, { annotation: invalid_attributes }, valid_session
+        #   expect(assigns(:annotation)).to be_a_new(Annotation)
+        # end
       end
     end
 
