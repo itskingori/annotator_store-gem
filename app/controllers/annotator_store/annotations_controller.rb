@@ -6,6 +6,7 @@ module AnnotatorStore
 
     # POST /annotations
     def create
+      format_client_input_to_rails_convention if params[:annotation].blank?
       @annotation = Annotation.new(annotation_params)
       respond_to do |format|
         if @annotation.save
@@ -53,9 +54,33 @@ module AnnotatorStore
       @annotation = Annotation.find(params[:id])
     end
 
+    # Convert the data sent by AnnotatorJS to the format that Rails expects so
+    # that we are able to create a proper params object
+    def format_client_input_to_rails_convention
+      params[:annotation] = {}
+      params[:annotation][:version] = 'v1.0'
+      params[:annotation][:text] = params[:text]
+      params[:annotation][:quote] = params[:quote]
+      params[:annotation][:uri] = params[:uri]
+      params[:annotation][:ranges_attributes] = params[:ranges].map do |r|
+        range = {}
+        range[:start]        = r[:start]
+        range[:end]          = r[:end]
+        range[:start_offset] = r[:startOffset]
+        range[:end_offset]   = r[:endOffset]
+        range
+      end
+    end
+
     # Only allow a trusted parameter 'white list' through.
     def annotation_params
-      params.require(:annotation).permit(:text, :quote, :uri, :ranges)
+      params.require(:annotation).permit(
+       :text,
+       :quote,
+       :uri,
+       :version,
+       { ranges_attributes: [ :start, :end, :start_offset, :end_offset ] }
+      )
     end
   end
 end
