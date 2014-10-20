@@ -6,8 +6,6 @@ module AnnotatorStore
     let(:range) { FactoryGirl.create :annotator_store_range }
 
     it 'has a valid factory' do
-      puts range.to_json
-      puts range.annotation.to_json
       expect(range).to be_valid
     end
   end
