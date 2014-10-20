@@ -5,6 +5,7 @@ v0.1.0
 ------
 
 * Create index page with description of API.
+* Add annotation functionality & create necessary endpoints
 
 
 v0.0.1

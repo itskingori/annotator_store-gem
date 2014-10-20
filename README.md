@@ -5,7 +5,8 @@ Annotator Store
 [![Build Status](https://travis-ci.org/itsmrwave/annotator-store.svg?branch=master)][13]
 
 Rails engine to implement a Ruby backend store implementation for
-[Annotator][annotator].
+[Annotator][annotator]. See demo application at [itsmrwave/annotator-store-
+demo][14].
 
 In case you were wondering:
 
@@ -136,3 +137,4 @@ they want as long as they provide attribution and waive liability.
 [11]: http://docs.annotatorjs.org/en/v1.2.x/plugins/store.html
 [12]: https://github.com/itsmrwave/annotator-store/graphs/contributors
 [13]: https://travis-ci.org/itsmrwave/annotator-store
+[14]: https://github.com/itsmrwave/annotator-store-demo
