@@ -6,7 +6,7 @@ module AnnotatorStore
 
     # POST /annotations
     def create
-      format_client_input_to_rails_convention
+      format_client_input_to_rails_convention_for_create
       @annotation = Annotation.new(annotation_params)
       respond_to do |format|
         if @annotation.save
@@ -23,6 +23,7 @@ module AnnotatorStore
 
     # PATCH/PUT /annotations/1
     def update
+      format_client_input_to_rails_convention_for_update
       respond_to do |format|
         if @annotation.update(annotation_params)
           format.json { render :show, status: :ok, location: annotation_url(@annotation) }
@@ -56,7 +57,7 @@ module AnnotatorStore
 
     # Convert the data sent by AnnotatorJS to the format that Rails expects so
     # that we are able to create a proper params object
-    def format_client_input_to_rails_convention
+    def format_client_input_to_rails_convention_for_create
       params[:annotation] = {}
       params[:annotation][:version] = 'v1.0'
       params[:annotation][:text] = params[:text]
@@ -70,6 +71,16 @@ module AnnotatorStore
         range[:end_offset]   = r[:endOffset]
         range
       end
+    end
+
+    # Convert the data sent by AnnotatorJS to the format that Rails expects so
+    # that we are able to create a proper params object
+    def format_client_input_to_rails_convention_for_update
+      params[:annotation] = {}
+      params[:annotation][:version] = 'v1.0'
+      params[:annotation][:text] = params[:text]
+      params[:annotation][:quote] = params[:quote]
+      params[:annotation][:uri] = params[:uri]
     end
 
     # Only allow a trusted parameter 'white list' through.
