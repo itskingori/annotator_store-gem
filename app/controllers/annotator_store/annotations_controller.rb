@@ -60,9 +60,9 @@ module AnnotatorStore
     def format_client_input_to_rails_convention_for_create
       params[:annotation] = {}
       params[:annotation][:version] = 'v1.0'
-      params[:annotation][:text] = params[:text]
-      params[:annotation][:quote] = params[:quote]
-      params[:annotation][:uri] = params[:uri]
+      params[:annotation][:text] = params[:text] unless params[:text].blank?
+      params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
+      params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
       params[:annotation][:ranges_attributes] = params[:ranges].map do |r|
         range = {}
         range[:start]        = r[:start]
@@ -70,7 +70,7 @@ module AnnotatorStore
         range[:start_offset] = r[:startOffset]
         range[:end_offset]   = r[:endOffset]
         range
-      end
+      end unless params[:ranges].blank?
     end
 
     # Convert the data sent by AnnotatorJS to the format that Rails expects so
@@ -78,9 +78,9 @@ module AnnotatorStore
     def format_client_input_to_rails_convention_for_update
       params[:annotation] = {}
       params[:annotation][:version] = 'v1.0'
-      params[:annotation][:text] = params[:text]
-      params[:annotation][:quote] = params[:quote]
-      params[:annotation][:uri] = params[:uri]
+      params[:annotation][:text] = params[:text] unless params[:text].blank?
+      params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
+      params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
     end
 
     # Only allow a trusted parameter 'white list' through.
