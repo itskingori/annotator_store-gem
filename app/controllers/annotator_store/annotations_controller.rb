@@ -6,7 +6,7 @@ module AnnotatorStore
 
     # POST /annotations
     def create
-      format_client_input_to_rails_convention if params[:annotation].blank?
+      format_client_input_to_rails_convention
       @annotation = Annotation.new(annotation_params)
       respond_to do |format|
         if @annotation.save
