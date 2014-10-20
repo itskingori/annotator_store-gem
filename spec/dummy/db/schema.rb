@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020055251) do
+ActiveRecord::Schema.define(version: 20141020063316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,15 +27,13 @@ ActiveRecord::Schema.define(version: 20141020055251) do
   end
 
   create_table "annotator_store_ranges", force: true do |t|
-    t.integer  "annotation_id"
     t.string   "start"
     t.string   "end"
     t.integer  "start_offset"
     t.integer  "end_offset"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.uuid     "annotation_id"
   end
-
-  add_index "annotator_store_ranges", ["annotation_id"], name: "index_annotator_store_ranges_on_annotation_id", using: :btree
 
 end
