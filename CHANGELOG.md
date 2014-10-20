@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v0.1.1
+------
+
+* Add required files to gemspec
+
+
 v0.1.0
 ------
 

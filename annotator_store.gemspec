@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.license        = 'MIT'
 
   spec.files          = Dir['{app,config,db,lib}/**/*', 'LICENSE.md', 'Rakefile', 'README.md']
+  spec.require_paths  = ['lib']
 
   spec.required_ruby_version = '>= 1.9.3'
 
