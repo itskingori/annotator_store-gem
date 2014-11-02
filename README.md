@@ -22,12 +22,6 @@ The gem should be [up on RubyGems.org][5], the [CHANGELOG here][7] and [all the
 releases listed here][8].
 
 
-Dependecies & Versions
-----------------------
-
-3rd party dependencies are specified in the `annotator_store.gemspec` file.
-
-
 Installation
 ------------
 
@@ -39,8 +33,155 @@ And then execute:
 
     $ bundle install
 
-Learn more about [bundler][4] and [Gemfiles][3].
+Run the migrations to create the tables to store the annotations:
 
+    $ rake annotator_store:install:migrations
+    $ rake db:migrate
+
+Then mount it in `config/routes.rb`:
+
+    # Configures store endpoint in your app
+    mount AnnotatorStore::Engine, at: '/annotator_store'
+
+Now it should be ready for use. All the endpoints will be available at `http://0.0.0.0:3000/annotator_store`.
+
+
+Annotation Format
+-----------------
+
+An annotation is a JSON document that contains a number of fields describing the position and content of an annotation within a specified document:
+
+    {
+      "id": "39fc339cf058bd22176771b3e3187329",  # unique id (added by backend)
+      "annotator_schema_version": "v1.0",        # schema version: default v1.0
+      "created": "2011-05-24T18:52:08.036814",   # created datetime in iso8601 format (added by backend)
+      "updated": "2011-05-26T12:17:05.012544",   # updated datetime in iso8601 format (added by backend)
+      "text": "A note I wrote",                  # content of annotation
+      "quote": "the text that was annotated",    # the annotated text (added by frontend)
+      "uri": "http://example.com",               # URI of annotated document (added by frontend)
+      "ranges": [                                # list of ranges covered by annotation (usually only one entry)
+        {
+          "start": "/p[69]/span/span",           # (relative) XPath to start element
+          "end": "/p[70]/span/span",             # (relative) XPath to end element
+          "startOffset": 0,                      # character offset within start element
+          "endOffset": 120                       # character offset within end element
+        }
+      ]
+    }
+
+
+API Endpoints
+-------------
+
+### Root
+
+| Method | Path | Returns                                                 |
+| ------ | ---- | ------------------------------------------------------- |
+| GET    | /    | Object containing store metadata, including API version |
+
+Returns (example):
+
+  $ curl http://example.com/annotator_store
+    {
+      "name": "Annotator Store API",
+      "version": "2.0.0",
+      "links": {
+        "annotation": {
+          "create": {
+            "url": "http://example.com/annotator_store/annotations",
+            "method": "POST",
+            "description": "Create or add new annotations."
+          },
+          "read": {
+            "url": "http://example.com/annotator_store/annotations/:id",
+            "method": "GET",
+            "description": "Read, retrieve or view existing annotation."
+          },
+          "update": {
+            "url": "http://example.com/annotator_store/annotations/:id",
+            "method": "PUT/PATCH",
+            "description": "Update or edit existing annotation."
+          },
+          "delete": {
+            "url": "http://example.com/annotator_store/annotations/:id",
+            "method": "DELETE",
+            "description": "Delete or deactivate existing annotation."
+          }
+      },
+      "search": {
+          "url": "http://example.com/annotator_store/search",
+          "method": "GET",
+          "description": "Search for annotations"
+        }
+      }
+    }
+
+
+### Create
+
+| Method  | Path         | Returns                                                   |
+| ------- | ------------ | --------------------------------------------------------- |
+| POST    | /annotations | `303 SEE OTHER` redirect to the appropriate read endpoint |
+
+Receives an annotation object in the proper annotation format, sent with `Content-Type: application/json`.
+
+
+### Read
+
+| Method | Path             | Returns              |
+| ------ | ---------------- | -------------------- |
+| GET    | /annotations/:id | An annotation object |
+
+Returns (example):
+
+    $ curl http://example.com/annotator_store/annotations/d41d8cd98f00b204e9800998ecf8427e
+    {
+      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "text": "Annotation text",
+      ...
+    }
+
+
+### Update
+
+| Method     | Path             | Returns                                                   |
+| ---------- | ---------------- | --------------------------------------------------------- |
+| PUT/PATCH  | /annotations/:id | `303 SEE OTHER` redirect to the appropriate read endpoint |
+
+Receives attributes in the proper annotation format, sent with `Content-Type: application/json`.
+
+
+### Delete
+
+| Method     | Path             | Returns                                        |
+| ---------- | ---------------- | ---------------------------------------------- |
+| DELETE     | /annotations/:id | `204 NO CONTENT`, and – obviously – no content |
+
+
+### Search
+
+| Method | Path     | Returns                                                 |
+| ------ | -------- | ------------------------------------------------------- |
+| GET    | /search  | An object with total and rows fields                    |
+
+Total is an integer denoting the total number of annotations matched by the search, while rows is a list containing what might be a subset of these annotations.
+
+If implemented, this method should also support the `limit` and `offset` query parameters for paging through results.
+
+Returns (example):
+
+    $ curl http://example.com/annotator_store/search?text=annotation
+    {
+      "total": 43127,
+      "rows": [
+        {
+          "id": "d41d8cd98f00b204e9800998ecf8427e",
+          "text": "Updated annotation text",
+          ...
+        },
+        ...
+      ]
+    }
 
 Development
 -----------
@@ -109,7 +250,7 @@ Then, here's some Annotator documentation to help you get up to speed:
 
 In summary, this gem helps implement a store for the plugin to interact with.
 
-Any code contributors will be [listed here][12].
+Any code contributors should be [listed here][12].
 
 
 License
