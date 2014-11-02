@@ -12,6 +12,10 @@ AllCops:
 Metrics/LineLength:
   Enabled: false
 
+Metrics/MethodLength:
+  CountComments: false
+  Max: 20
+
 Style/NumericLiterals:
   MinDigits: 7
   Exclude:
