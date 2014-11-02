@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :annotator_store_annotation, class: AnnotatorStore::Annotation do
-    version 'v1.0'
-    text 'A note I wrote'
-    quote 'the text that was annotated'
-    uri 'http://example.com'
+    version "v#{Faker::App.version}"
+    text Faker::Lorem.sentence
+    quote Faker::Lorem.sentence
+    uri Faker::Internet.url
   end
 end

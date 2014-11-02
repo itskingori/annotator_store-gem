@@ -6,6 +6,7 @@ require 'rspec/rails'
 
 # Development dependencies
 require 'json-schema'
+require 'faker'
 require 'factory_girl_rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
