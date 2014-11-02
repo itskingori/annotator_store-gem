@@ -4,12 +4,29 @@ module AnnotatorStore
   RSpec.describe 'Annotations', type: :request do
 
     let(:annotation) { FactoryGirl.create :annotator_store_annotation }
-    let(:valid_attributes) { FactoryGirl.attributes_for(:annotator_store_annotation) }
-    let(:new_attributes) { valid_attributes }
 
     describe 'POST /annotations' do
+      let(:valid_attributes) do
+        {
+          version: 'v1.0',
+          text: 'A note I wrote',
+          quote: 'the text that was annotated',
+          uri: 'http://example.com',
+          ranges: [
+            {
+              start: '/p[69]/span/span',
+              end: '/p[70]/span/span',
+              startOffset: 0,
+              endOffset: 120
+            }
+          ]
+        }
+      end
+
       it 'returns response status 200' do
-        post annotator_store.annotations_path, annotation: valid_attributes
+        parameters = valid_attributes
+        parameters[:format] = :json
+        post annotator_store.annotations_path, parameters
         expect(response).to have_http_status(200)
       end
     end
@@ -22,8 +39,19 @@ module AnnotatorStore
     end
 
     describe 'PUT /annotations/1' do
+      let(:new_attributes) do
+        {
+          version: "v#{Faker::App.version}",
+          text: Faker::Lorem.sentence,
+          quote: Faker::Lorem.sentence,
+          uri: Faker::Internet.url
+        }
+      end
+
       it 'returns response status 200' do
-        put annotator_store.annotation_path(annotation), annotation: new_attributes
+        parameters = new_attributes
+        parameters[:format] = :json
+        put annotator_store.annotation_path(annotation), parameters
         expect(response).to have_http_status(200)
       end
     end
