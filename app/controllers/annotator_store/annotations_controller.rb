@@ -59,7 +59,7 @@ module AnnotatorStore
     # that we are able to create a proper params object
     def format_client_input_to_rails_convention_for_create
       params[:annotation] = {}
-      params[:annotation][:version] = params[:version] unless params[:version].blank?
+      params[:annotation][:version] = params[:annotator_schema_version] unless params[:annotator_schema_version].blank?
       params[:annotation][:text] = params[:text] unless params[:text].blank?
       params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
@@ -77,7 +77,7 @@ module AnnotatorStore
     # that we are able to create a proper params object
     def format_client_input_to_rails_convention_for_update
       params[:annotation] = {}
-      params[:annotation][:version] = params[:version] unless params[:version].blank?
+      params[:annotation][:version] = params[:annotator_schema_version] unless params[:annotator_schema_version].blank?
       params[:annotation][:text] = params[:text] unless params[:text].blank?
       params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
