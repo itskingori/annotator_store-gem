@@ -22,8 +22,16 @@ module AnnotatorStore
         expect(delete: '/annotations/1').to route_to('annotator_store/annotations#destroy', id: '1', format: :json)
       end
 
+      it 'routes OPTIONS /annotations/1 to #options' do
+        expect(options: '/annotations/1').to route_to('annotator_store/annotations#options', id: '1', format: :json)
+      end
+
       it 'routes OPTIONS /annotations to #options' do
         expect(options: '/annotations').to route_to('annotator_store/annotations#options', format: :json)
+      end
+
+      it 'routes OPTIONS /search to #options' do
+        expect(options: '/search').to route_to('annotator_store/annotations#options', format: :json)
       end
     end
   end
