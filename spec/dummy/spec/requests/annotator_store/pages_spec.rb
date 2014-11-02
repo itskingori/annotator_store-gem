@@ -8,10 +8,12 @@ module AnnotatorStore
         get annotator_store.root_path
         expect(response).to have_http_status(200)
       end
+    end
 
-      it 'returns the json api description' do
-        get annotator_store.root_path
-        expect(response).to match_json_schema('api/description')
+    describe 'GET /search' do
+      it 'returns response status 200' do
+        get annotator_store.search_path
+        expect(response).to have_http_status(200)
       end
     end
   end
