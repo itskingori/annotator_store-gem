@@ -1,10 +1,13 @@
 CHANGELOG
 =========
 
-v0.1.1
+v0.2.0
 ------
 
 * Add required files to gemspec
+* Add CRUD (create, read, update and delete) endpoints
+* Add search endpoint with filter support for uri
+* Included tests for routes, requests, models and controllers
 
 
 v0.1.0
