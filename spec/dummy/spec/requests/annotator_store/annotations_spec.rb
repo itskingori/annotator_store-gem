@@ -23,11 +23,11 @@ module AnnotatorStore
         }
       end
 
-      it 'returns response status 200' do
+      it 'returns response status 201' do
         parameters = valid_params
         parameters[:format] = :json
         post annotator_store.annotations_path, parameters
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(201)
       end
     end
 

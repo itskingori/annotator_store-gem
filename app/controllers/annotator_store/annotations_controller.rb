@@ -10,7 +10,7 @@ module AnnotatorStore
       @annotation = Annotation.new(annotation_params)
       respond_to do |format|
         if @annotation.save
-          format.json { render :show, status: :ok, location: annotation_url(@annotation) }
+          format.json { render :show, status: :created, location: annotation_url(@annotation) }
         else
           format.json { render json: @annotation.errors, status: :unprocessable_entity }
         end

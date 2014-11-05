@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v0.3.0
+------
+
+* Change create endpoint to respond with `201 CREATED`
+
+
 v0.2.0
 ------
 

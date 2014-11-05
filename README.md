@@ -124,11 +124,20 @@ Returns (example):
 
 ### Create
 
-| Method  | Path         | Returns                                                               |
-| ------- | ------------ | --------------------------------------------------------------------- |
-| POST    | /annotations | `200 OK` with location in header set to the appropriate read endpoint |
+| Method  | Path         | Returns                                                                    |
+| ------- | ------------ | -------------------------------------------------------------------------- |
+| POST    | /annotations | `201 CREATED` with location in header set to the appropriate read endpoint |
 
 Receives an annotation object in the proper annotation format, sent with `Content-Type: application/json`.
+
+Returns (example):
+
+    $ curl http://example.com/annotator_store/annotations
+    {
+      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "text": "Annotation text",
+      ...
+    }
 
 
 ### Read
@@ -154,6 +163,15 @@ Returns (example):
 | PUT/PATCH  | /annotations/:id | `200 OK` with location in header set to the appropriate read endpoint |
 
 Receives attributes in the proper annotation format, sent with `Content-Type: application/json`.
+
+Returns (example):
+
+    $ curl http://example.com/annotator_store/annotations/d41d8cd98f00b204e9800998ecf8427e
+    {
+      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "text": "Annotation text",
+      ...
+    }
 
 
 ### Delete
