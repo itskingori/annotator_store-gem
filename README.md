@@ -35,6 +35,10 @@ And then from the app root execute:
 
     $ bundle install
 
+Require the engine in `config/application.rb`
+
+    require 'annotator_store'
+
 Configure your database credentials in `config/database.yml` and then run the
 migrations to create the tables to store the annotations:
 
