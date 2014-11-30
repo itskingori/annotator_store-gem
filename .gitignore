@@ -10,7 +10,7 @@
 /log/*
 /pkg/*
 /tmp/*
-Gemfile.lock
+/Gemfile.lock
 
 ## Ruby
-.ruby-version
+/.ruby-version
