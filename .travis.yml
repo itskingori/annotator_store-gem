@@ -5,6 +5,8 @@ rvm:
   - '2.1.0'
   - '2.0.0'
   - '1.9.3'
+gemfile:
+  - gemfiles/rails_4.1.6.gemfile
 addons:
   postgresql: '9.3'
 before_script:

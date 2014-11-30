@@ -12,5 +12,8 @@
 /tmp/*
 /Gemfile.lock
 
+## Appraisals
+/gemfiles/rails_4.1.6.gemfile.lock
+
 ## Ruby
 /.ruby-version
