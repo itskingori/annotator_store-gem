@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description    = 'Rails engine to implement a Ruby backend store implementation for Annotator, an open-source JavaScript library to easily add annotation functionality to any webpage.'
   spec.license        = 'MIT'
 
-  spec.files          = Dir['{app,config,db,lib}/**/*', 'LICENSE.md', 'Rakefile', 'README.md']
+  spec.files          = Dir['{app,config,db,lib}/**/*', 'CHANGELOG.md', 'CONTRIBUTING.md', 'LICENSE.md', 'Rakefile', 'README.md']
   spec.require_paths  = ['lib']
 
   spec.required_ruby_version = '>= 1.9.3'

@@ -304,8 +304,8 @@ long as they provide attribution and waive liability.
 [4]: http://bundler.io
 [5]: https://rubygems.org/gems/annotator-store
 [6]: http://rubydoc.info/gems/annotator-store/frames/
-[7]: https://raw.githubusercontent.com/itsmrwave/annotator-store/master/CHANGELOG.md
-[9]: https://raw.githubusercontent.com/itsmrwave/annotator-store/master/CONTRIBUTING.md
+[7]: https://github.com/itsmrwave/annotator-store/blob/master/CHANGELOG.md
+[9]: https://github.com/itsmrwave/annotator-store/blob/master/CONTRIBUTING.md
 [8]: https://github.com/itsmrwave/annotator-store/releases
 [10]: http://docs.annotatorjs.org/en/v1.2.x/storage.html
 [11]: http://docs.annotatorjs.org/en/v1.2.x/plugins/store.html
