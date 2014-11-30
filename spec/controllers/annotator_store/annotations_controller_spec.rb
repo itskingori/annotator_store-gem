@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 module AnnotatorStore
   RSpec.describe AnnotationsController, type: :controller do
 

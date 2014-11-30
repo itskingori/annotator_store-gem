@@ -266,9 +266,6 @@ your specs.
 
 
 ```
-=> Change directory to dummy application
-$ cd spec/dummy/
-
 => Run all specs
 $ bundle exec rspec
 
