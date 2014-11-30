@@ -18,13 +18,13 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.3'
 
   spec.add_development_dependency 'pg'
-  spec.add_development_dependency 'appraisal', '~> 1.0.2'
-  spec.add_development_dependency 'database_cleaner', '~> 1.3.0'
-  spec.add_development_dependency 'factory_girl_rails', '>= 4.4.1'
-  spec.add_development_dependency 'faker', '>= 1.4.3'
-  spec.add_development_dependency 'json-schema', '>= 2.2.5'
-  spec.add_development_dependency 'rails', '~> 4.1.6'
-  spec.add_development_dependency 'rspec-rails', '>= 3.0.0'
+  spec.add_development_dependency 'appraisal'
+  spec.add_development_dependency 'database_cleaner'
+  spec.add_development_dependency 'factory_girl_rails'
+  spec.add_development_dependency 'faker'
+  spec.add_development_dependency 'json-schema'
+  spec.add_development_dependency 'rspec-rails'
 
   spec.add_runtime_dependency 'jbuilder'
+  spec.add_runtime_dependency 'rails', '>= 3.2'
 end
