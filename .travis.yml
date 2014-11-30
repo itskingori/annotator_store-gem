@@ -14,5 +14,5 @@ addons:
   postgresql: '9.3'
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - cp spec/dummy/config/database.yml.travis spec/dummy/config/database.yml
+  - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
 script: 'bundle exec rspec spec'
