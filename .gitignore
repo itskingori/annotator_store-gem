@@ -12,7 +12,7 @@
 /tmp/*
 /Gemfile.lock
 
-## Appraisals
+## Appraisal
 /gemfiles/*.gemfile.lock
 
 ## Ruby
