@@ -24,6 +24,29 @@ releases listed here][8].
 _Ps: Only developed and tested using a Rails app with a Postgres DB._
 
 
+Dependecies & Versions
+----------------------
+
+### Ruby
+
+Supports Ruby versions:
+
+* 1.9.3
+* 2.0.0
+* 2.1.0
+* 2.1.1
+* 2.1.2
+
+### Rails
+
+Supports Rails versions:
+
+* 3.2.x
+* 4.0.x
+* 4.1.x
+* 4.2.x
+
+
 Installation
 ------------
 
