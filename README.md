@@ -4,11 +4,8 @@ Annotator Store
 [![Gem Version](https://badge.fury.io/rb/annotator-store.svg)][5]
 [![Build Status](https://travis-ci.org/itsmrwave/annotator-store.svg?branch=master)][13]
 
-Rails engine to implement a Ruby backend store implementation for
-[Annotator][annotator]. See demo application at [itsmrwave/annotator-store-
-demo][14].
-
-In case you were wondering:
+Rails engine to implement a [Ruby on Rails][18] backend store implementation for
+[Annotator][annotator].
 
 > Annotator an open-source JavaScript library to easily add annotation
 > functionality to any webpage. Annotations can have comments, tags, links,
@@ -18,18 +15,30 @@ In case you were wondering:
 > plugins allowing the annotation of PDFs, EPUBs, videos, images, sound, and
 > more.
 
-The gem should be [up on RubyGems.org][5], the [CHANGELOG here][7] and [all the
+The gem should be up on [rubygems.org][5], the [CHANGELOG here][7] and [all the
 releases listed here][8].
 
-_Ps: Only developed and tested using a Rails app with a Postgres DB._
+
+Contents
+--------
+
+1. Dependencies & Versions
+2. Installation
+3. Annotation Format
+4. API Endpoints
+5. Development
+6. Testing & Appraisals
+7. Versioning
+8. Contributing
+9. License
 
 
-Dependecies & Versions
+Dependencies & Versions
 ----------------------
 
-### Ruby
+This engine requires Rails `>= 3.2` and Ruby `>= 1.9.3`.
 
-Supports Ruby versions:
+Supported Ruby versions:
 
 * 1.9.3
 * 2.0.0
@@ -37,14 +46,16 @@ Supports Ruby versions:
 * 2.1.1
 * 2.1.2
 
-### Rails
-
-Supports Rails versions:
+Supported Rails versions:
 
 * 3.2.x
 * 4.0.x
 * 4.1.x
 * 4.2.x
+
+_'Supported'_ means that the test suite is designed to cover these versions only. If your version isn't supported [raise a ticket][19]; make sure you include the versions.
+
+Sometimes when the build is failing, it's probably a few of these configurations. Have a [look at the builds here][13] and see section on testing & appraisals for more information.
 
 
 Installation
@@ -54,7 +65,7 @@ Add this line to your application's Gemfile:
 
     gem 'annotator-store'
 
-And then from the app root execute:
+And then from the `APP_ROOT` execute:
 
     $ bundle install
 
@@ -64,8 +75,11 @@ Require the engine in `config/application.rb`
 
 Configure your database credentials in `config/database.yml` and then run the
 migrations to create the tables to store the annotations:
-
+	
+	# Copy migrations over from the engine
     $ rake annotator_store:install:migrations
+    
+    # Run the copied migrations
     $ rake db:migrate
 
 Then mount it in `config/routes.rb`:
@@ -241,23 +255,23 @@ Returns (example):
 Development
 -----------
 
-There's a smaller dummy application created inside it at `spec/dummy`. This
+There's a dummy Rails application in the `spec/dummy` folder. This
 application is used as a mounting point for the engine, to make testing the
 engine on a Rails app extremely simple. This directory should be treated like a
 typical Rails testing environment, allowing for unit, functional and integration
 tests.
 
-The current dummy app uses Rails 4.1.6 and Postgres as a store. It's my hope
-that the gem works at least for all Rails versions `>= 4.0.0` (I don't see why
-not) and other data stores that Rails supports like SQLite, MySQL, MongoDB etc
-(since Rails uses an ORM) ... I guess we'll see how it goes.
+The current dummy app was generated using Rails 4.1.6 and with Postgres as the store (for now) ... this means that it might require some configuration to make this app as generic as possible so that multiple Rails versions can be covered by the tests. I hope the gem works with at least for all Rails `>= 3.2` (I don't see why
+this wouldn't be possible) and also other data stores that Rails supports like SQLite, MySQL, MongoDB etc
+(since Rails uses an ORM)   ... I guess we'll see how it goes.
 
-You can see what the engine has so far by running `rails server` in `spec/dummy`
-and then browse to `http://0.0.0.0:3000/`.
+You can start up the dummy app to give it a spin by running `rails server`
+in `spec/dummy` and then browse to `http://0.0.0.0:3000/`. There's a README in
+there with a few details on setup, make sure you check it out.
 
 
-Testing
--------
+Testing & Appraisals
+--------------------
 
 You may extend the dummy application by generating controllers, models or views
 from within the directory (`spec/dummy`), and then use those to test our engine
@@ -265,18 +279,41 @@ from within the directory (`spec/dummy`), and then use those to test our engine
 your specs.
 
 
-```
-=> Run all specs
-$ bundle exec rspec
+	#=> Run all specs
+	$ bundle exec rspec
 
-=> Run only model specs example ...
-$ bundle exec rspec spec/models
+	#=> Run only model specs example ...
+	$ bundle exec rspec spec/models
 
-=> Run only specs for AnnotatorStore::AnnotationsController ...
-$ bundle exec rspec spec/controllers/annotations_controller_spec.rb
-```
+	#=> Run only specs for AnnotatorStore::AnnotationsController ...
+	$ bundle exec rspec spec/controllers/annotations_controller_spec.rb
+	
+These will run the tests as per your local default configuration.
 
-Automated tests are configured and set up to [run on Travis-CI][13].  Any push
+The [appraisal gem][16] is used to integrate with bundler and rake to
+test the engine against different versions of dependencies in repeatable
+scenarios called _'appraisals'_. This makes it easy to check for regressions in
+the library without interfering with day-to-day development using Bundler.
+
+As a result, a separate test run is created for each Ruby version and every Rails version (see `travis.yml` file for specifics).
+
+Locally you can test for different Rails versions. For example:
+
+	# Run specs against rails 3.2.21
+	$ appraisal rails-3.2.21 rspec spec
+
+	# Run specs against rails 4.0.12
+	$ appraisal rails-4.0.12 rspec spec
+
+	# Run specs against rails 4.1.8
+	$ appraisal rails-4.1.8 rspec spec
+
+	# Run specs against rails 4.2.0.rc1
+	$ appraisal rails-4.2.0.rc1 rspec spec
+
+Check the Appraisal file at the root for the different rails configurations. [Learn more about appraisals here][17].
+
+Automated tests are configured and set up to [run on Travis-CI][13]. Any push
 or pull request will be built.
 
 
@@ -284,11 +321,11 @@ Versioning
 ----------
 
 Major version zero (0.y.z) is for initial development. Anything may change at
-any time. The public API should not be considered stable.
+any time. The public API should not be considered stable (implicitly mean, not production ready ... yet).
 
-Version 1.0.0 defines the public API. The way in which the version number is
-incremented after this release is dependent on this public API and how it
-changes as per [Semantic Versioning 2.0.0][semver].
+Version 1.0.0 defines the public API (implying that it is production ready). The way in
+which the version number is incremented after this release is dependent on this
+public API and how it changes as per [Semantic Versioning 2.0.0][semver].
 
 
 Contributing
@@ -333,3 +370,7 @@ long as they provide attribution and waive liability.
 [13]: https://travis-ci.org/itsmrwave/annotator-store
 [14]: https://github.com/itsmrwave/annotator-store-demo
 [15]: https://github.com/itsmrwave/annotator-store/issues/1
+[16]: http://rubygems.org/gems/appraisal
+[17]: http://www.rubydoc.info/gems/appraisal
+[18]: http://rubyonrails.org
+[19]: https://github.com/itsmrwave/annotator-store/issues/new
