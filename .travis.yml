@@ -19,4 +19,4 @@ before_script:
   - bundle exec rake annotator_store:install:migrations
   - bundle exec rake db:schema:load
   - cd ../../
-script: 'bundle exec rspec spec'
+script: bundle exec rspec spec
