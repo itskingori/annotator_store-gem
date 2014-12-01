@@ -24,5 +24,13 @@ module Dummy
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Rails 4.0 has a secret_key_base deprecation warning. This deprecation does
+    # not seem to have alternative syntax to remove the deprecation warning in a
+    # Rails 4.0 application. To satisfy the deprecation, we use the keys in
+    # secrets.yml and disregard the idea of having it in the secret_token.rb
+    # file. The implement a YAML loader to extract the token from your
+    # secrets.yml file. This also keep Rails 3 happy :-)
+    config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
   end
 end
