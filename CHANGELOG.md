@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v0.4.0
+------
+
+* Add support for MySQL
+
+
 v0.3.0
 ------
 
