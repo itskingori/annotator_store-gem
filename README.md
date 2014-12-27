@@ -36,26 +36,29 @@ Contents
 Dependencies & Versions
 ----------------------
 
-This engine requires Rails `>= 3.2` and Ruby `>= 1.9.3`.
+This engine requires Rails `>= 4.0` and Ruby `>= 1.9.3`.
 
 Supported Ruby versions:
 
-* 1.9.3
-* 2.0.0
-* 2.1.0
-* 2.1.1
-* 2.1.2
+* [X] 1.9.3
+* [X] 2.0.0
+* [X] 2.1.0
+* [X] 2.1.1
+* [X] 2.1.2
 
 Supported Rails versions:
 
-* 3.2.x
-* 4.0.x
-* 4.1.x
-* 4.2.x
+* [X] 4.0.x
+* [X] 4.1.x
+* [X] 4.2.x
 
-_'Supported'_ means that the test suite is designed to cover these versions only. If your version isn't supported [raise a ticket][19]; make sure you include the versions.
+_'Supported'_ means that the test suite is designed to cover these versions only.
+If your version isn't supported [raise a ticket][19]; make sure you include the
+versions.
 
-Sometimes when the build is failing, it's probably a few of these configurations. Have a [look at the builds here][13] and see section on testing & appraisals for more information.
+Sometimes when the build is failing, it's probably a few of these
+configurations. Have a [look at the builds here][13] and see section on testing
+& appraisals for more information.
 
 
 Installation
@@ -255,18 +258,21 @@ Returns (example):
 Development
 -----------
 
-There's a dummy Rails application in the `spec/dummy` folder. This
-application is used as a mounting point for the engine, to make testing the
-engine on a Rails app extremely simple. This directory should be treated like a
-typical Rails testing environment, allowing for unit, functional and integration
-tests.
+There's a dummy Rails application in the `spec/dummy` folder. This application
+is used as a mounting point for the engine, to make testing the engine on a
+Rails app extremely simple. This directory should be treated like a typical
+Rails testing environment, allowing for unit, functional and integration tests.
 
-The current dummy app was generated using Rails 4.1.6 and with Postgres as the store (for now) ... this means that it might require some configuration to make this app as generic as possible so that multiple Rails versions can be covered by the tests. I hope the gem works with at least for all Rails `>= 3.2` (I don't see why
-this wouldn't be possible) and also other data stores that Rails supports like SQLite, MySQL, MongoDB etc
-(since Rails uses an ORM)   ... I guess we'll see how it goes.
+The current dummy app was generated using Rails 4.1.6 and with Postgres as the
+store (for now) ... this means that it might require some configuration to make
+this app as generic as possible so that multiple Rails versions can be covered
+by the tests. I hope the gem works with at least for all Rails `>= 3.2` (I don't
+see why this wouldn't be possible) and also other data stores that Rails
+supports like SQLite, MySQL, MongoDB etc (since Rails uses an ORM)   ... I guess
+we'll see how it goes.
 
-You can start up the dummy app to give it a spin by running `rails server`
-in `spec/dummy` and then browse to `http://0.0.0.0:3000/`. There's a README in
+You can start up the dummy app to give it a spin by running `rails server` in
+`spec/dummy` and then browse to `http://0.0.0.0:3000/`. There's a README in
 there with a few details on setup, make sure you check it out.
 
 
@@ -290,17 +296,15 @@ your specs.
 
 These will run the tests as per your local default configuration.
 
-The [appraisal gem][16] is used to integrate with bundler and rake to
-test the engine against different versions of dependencies in repeatable
-scenarios called _'appraisals'_. This makes it easy to check for regressions in
-the library without interfering with day-to-day development using Bundler.
+The [appraisal gem][16] is used to integrate with bundler and rake to test the
+engine against different versions of dependencies in repeatable scenarios called
+_'appraisals'_. This makes it easy to check for regressions in the library
+without interfering with day-to-day development using Bundler.
 
-As a result, a separate test run is created for each Ruby version and every Rails version (see `travis.yml` file for specifics).
+As a result, a separate test run is created for each Ruby version and every
+Rails version (see `travis.yml` file for specifics).
 
 Locally you can test for different Rails versions. For example:
-
-	# Run specs against rails 3.2.21
-	$ appraisal rails-3.2.21 rspec spec
 
 	# Run specs against rails 4.0.12
 	$ appraisal rails-4.0.12 rspec spec
@@ -311,21 +315,24 @@ Locally you can test for different Rails versions. For example:
 	# Run specs against rails 4.2.0
 	$ appraisal rails-4.2.0 rspec spec
 
-Check the Appraisal file at the root for the different rails configurations. [Learn more about appraisals here][17].
+Check the Appraisal file at the root for the different rails configurations.
+[Learn more about appraisals here][17].
 
-Automated tests are configured and set up to [run on Travis-CI][13]. Any push
-or pull request will be built.
+Automated tests are configured and set up to [run on Travis-CI][13]. Any push or
+pull request will be built.
 
 
 Versioning
 ----------
 
 Major version zero (0.y.z) is for initial development. Anything may change at
-any time. The public API should not be considered stable (implicitly mean, not production ready ... yet).
+any time. The public API should not be considered stable (implicitly mean, not
+production ready ... yet).
 
-Version 1.0.0 defines the public API (implying that it is production ready). The way in
-which the version number is incremented after this release is dependent on this
-public API and how it changes as per [Semantic Versioning 2.0.0][semver].
+Version 1.0.0 defines the public API (implying that it is production ready). The
+way in which the version number is incremented after this release is dependent
+on this public API and how it changes as per [Semantic Versioning
+2.0.0][semver].
 
 
 Contributing
