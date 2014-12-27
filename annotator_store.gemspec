@@ -17,7 +17,11 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 1.9.3'
 
+  # Database dependencies
+  spec.add_development_dependency 'mysql2'
   spec.add_development_dependency 'pg'
+
+  # Development dependencies
   spec.add_development_dependency 'appraisal'
   spec.add_development_dependency 'database_cleaner'
   spec.add_development_dependency 'factory_girl_rails'
@@ -25,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'json-schema'
   spec.add_development_dependency 'rspec-rails'
 
+  # Runtime dependencies
   spec.add_runtime_dependency 'jbuilder'
   spec.add_runtime_dependency 'rails', '>= 4.0'
 end

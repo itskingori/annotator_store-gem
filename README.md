@@ -36,7 +36,8 @@ Contents
 Dependencies & Versions
 ----------------------
 
-This engine requires Rails `>= 4.0` and Ruby `>= 1.9.3`.
+This engine requires Rails `>= 4.0` and Ruby `>= 1.9.3` and supports more than
+one database.
 
 Supported Ruby versions:
 
@@ -51,6 +52,11 @@ Supported Rails versions:
 * [X] 4.0.x
 * [X] 4.1.x
 * [X] 4.2.x
+
+Supported databases:
+
+* [X] MySQL
+* [X] PostgresSQL
 
 _'Supported'_ means that the test suite is designed to cover these versions only.
 If your version isn't supported [raise a ticket][19]; make sure you include the
@@ -255,6 +261,7 @@ Returns (example):
       ]
     }
 
+
 Development
 -----------
 
@@ -275,6 +282,15 @@ You can start up the dummy app to give it a spin by running `rails server` in
 `spec/dummy` and then browse to `http://0.0.0.0:3000/`. There's a README in
 there with a few details on setup, make sure you check it out.
 
+PostgreSQL is configured to be the default database configuration. Set the `DB`
+environment variable to either `mysql` or `postgres` to choose between the two.
+
+    # To use MySQL
+    $ DB=mysql [commands to run your tests]
+
+    # To use PostgreSQL
+    $ DB=postgres [commands to run your tests]
+
 
 Testing & Appraisals
 --------------------
@@ -284,15 +300,14 @@ from within the directory (`spec/dummy`), and then use those to test our engine
 (I've done this already but feel free to add). Then use the rspec command to run
 your specs.
 
+  	#=> Run all specs
+  	$ bundle exec rspec
 
-	#=> Run all specs
-	$ bundle exec rspec
+  	#=> Run only model specs example ...
+  	$ bundle exec rspec spec/models
 
-	#=> Run only model specs example ...
-	$ bundle exec rspec spec/models
-
-	#=> Run only specs for AnnotatorStore::AnnotationsController ...
-	$ bundle exec rspec spec/controllers/annotations_controller_spec.rb
+  	#=> Run only specs for AnnotatorStore::AnnotationsController ...
+  	$ bundle exec rspec spec/controllers/annotations_controller_spec.rb
 
 These will run the tests as per your local default configuration.
 
@@ -306,20 +321,23 @@ Rails version (see `travis.yml` file for specifics).
 
 Locally you can test for different Rails versions. For example:
 
-	# Run specs against rails 4.0.12
-	$ appraisal rails-4.0.12 rspec spec
+  	# Run specs against rails 4.0.12
+  	$ appraisal rails-4.0.12 rspec spec
 
-	# Run specs against rails 4.1.8
-	$ appraisal rails-4.1.8 rspec spec
+  	# Run specs against rails 4.1.8
+  	$ appraisal rails-4.1.8 rspec spec
 
-	# Run specs against rails 4.2.0
-	$ appraisal rails-4.2.0 rspec spec
+  	# Run specs against rails 4.2.0
+  	$ appraisal rails-4.2.0 rspec spec
 
 Check the Appraisal file at the root for the different rails configurations.
 [Learn more about appraisals here][17].
 
 Automated tests are configured and set up to [run on Travis-CI][13]. Any push or
 pull request will be built.
+
+Ps: `DB` environment variable should be set to either `mysql` or `postgres` to
+create a proper build matrix.
 
 
 Versioning
