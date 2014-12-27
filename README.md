@@ -56,11 +56,11 @@ Supported Rails versions:
 Supported databases:
 
 * [X] MySQL
-* [X] PostgresSQL
+* [X] PostgreSQL
 
-_'Supported'_ means that the test suite is designed to cover these versions only.
-If your version isn't supported [raise a ticket][19]; make sure you include the
-versions.
+_'Supported'_ means that the test suite is designed to cover these versions
+only. If your version isn't supported [raise a ticket][19]; make sure you
+include the versions.
 
 Sometimes when the build is failing, it's probably a few of these
 configurations. Have a [look at the builds here][13] and see section on testing
@@ -83,12 +83,21 @@ Require the engine in `config/application.rb`
     require 'annotator_store'
 
 Configure your database credentials in `config/database.yml` and then run the
-migrations to create the tables to store the annotations:
+migrations to create the tables to store the annotations. Depending on the
+database of choice you'll need to set the `DB` environment variable when running
+the migrations. There are slight variations in the structure of the DB when
+using MySQL and PostgreSQL. The default setting is PostgreSQL if not set.
 
     # Copy migrations over from the engine
     $ rake annotator_store:install:migrations
 
-    # Run the copied migrations
+    # To run the copied migration when using MySQL
+    $ DB=mysql rake db:migrate
+
+    # To run the copied migration when using PostgreSQL
+    $ DB=postgres rake db:migrate
+
+    # To run the copied migration without specifying type (defaults to postgres)
     $ rake db:migrate
 
 Then mount it in `config/routes.rb`:
@@ -123,6 +132,9 @@ position and content of an annotation within a specified document:
         }
       ]
     }
+
+For PostgreSQL the primary key of the annotation will be a UUID while for MySQL it
+will be a normal integer id.
 
 
 API Endpoints
@@ -270,26 +282,22 @@ is used as a mounting point for the engine, to make testing the engine on a
 Rails app extremely simple. This directory should be treated like a typical
 Rails testing environment, allowing for unit, functional and integration tests.
 
-The current dummy app was generated using Rails 4.1.6 and with Postgres as the
-store (for now) ... this means that it might require some configuration to make
-this app as generic as possible so that multiple Rails versions can be covered
-by the tests. I hope the gem works with at least for all Rails `>= 3.2` (I don't
-see why this wouldn't be possible) and also other data stores that Rails
-supports like SQLite, MySQL, MongoDB etc (since Rails uses an ORM)   ... I guess
-we'll see how it goes.
+The current dummy app was generated using Rails 4.1.6 and with PostgreSQL as the
+default store. The app depends on the `DB` environment variable to know which
+settings to use for the database. See `config/database.yml` for details.
+
+Set the `DB` environment variable to either `mysql` or `postgres` to choose
+between the two.
+
+    # To use MySQL
+    $ DB=mysql [commands to run]
+
+    # To use PostgreSQL
+    $ DB=postgres [commands to run]
 
 You can start up the dummy app to give it a spin by running `rails server` in
 `spec/dummy` and then browse to `http://0.0.0.0:3000/`. There's a README in
 there with a few details on setup, make sure you check it out.
-
-PostgreSQL is configured to be the default database configuration. Set the `DB`
-environment variable to either `mysql` or `postgres` to choose between the two.
-
-    # To use MySQL
-    $ DB=mysql [commands to run your tests]
-
-    # To use PostgreSQL
-    $ DB=postgres [commands to run your tests]
 
 
 Testing & Appraisals
@@ -333,11 +341,18 @@ Locally you can test for different Rails versions. For example:
 Check the Appraisal file at the root for the different rails configurations.
 [Learn more about appraisals here][17].
 
-Automated tests are configured and set up to [run on Travis-CI][13]. Any push or
-pull request will be built.
+PostgreSQL is configured to be the default database configuration. Set the `DB`
+environment variable to either `mysql` or `postgres` to choose between the two.
 
-Ps: `DB` environment variable should be set to either `mysql` or `postgres` to
-create a proper build matrix.
+    # To use MySQL
+    $ DB=mysql [commands to run your tests]
+
+    # To use PostgreSQL
+    $ DB=postgres [commands to run your tests]
+
+Automated tests are configured and set up to [run on Travis-CI][13]. Any push or
+pull request will be built. The `DB` environment variable should be set to
+either `mysql` or `postgres` to create a proper build matrix.
 
 
 Versioning
