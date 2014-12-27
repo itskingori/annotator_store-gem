@@ -5,6 +5,8 @@ v0.3.0
 ------
 
 * Change create endpoint to respond with `201 CREATED`
+* Test support for Ruby `>= 1.9.3`.
+* Test support for Rails `>= 4.0`.
 
 
 v0.2.0
