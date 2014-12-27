@@ -75,10 +75,10 @@ Require the engine in `config/application.rb`
 
 Configure your database credentials in `config/database.yml` and then run the
 migrations to create the tables to store the annotations:
-	
-	# Copy migrations over from the engine
+
+    # Copy migrations over from the engine
     $ rake annotator_store:install:migrations
-    
+
     # Run the copied migrations
     $ rake db:migrate
 
@@ -287,7 +287,7 @@ your specs.
 
 	#=> Run only specs for AnnotatorStore::AnnotationsController ...
 	$ bundle exec rspec spec/controllers/annotations_controller_spec.rb
-	
+
 These will run the tests as per your local default configuration.
 
 The [appraisal gem][16] is used to integrate with bundler and rake to
@@ -308,8 +308,8 @@ Locally you can test for different Rails versions. For example:
 	# Run specs against rails 4.1.8
 	$ appraisal rails-4.1.8 rspec spec
 
-	# Run specs against rails 4.2.0.rc1
-	$ appraisal rails-4.2.0.rc1 rspec spec
+	# Run specs against rails 4.2.0
+	$ appraisal rails-4.2.0 rspec spec
 
 Check the Appraisal file at the root for the different rails configurations. [Learn more about appraisals here][17].
 

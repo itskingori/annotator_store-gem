@@ -29,7 +29,7 @@ ActiveRecord::Migration.check_pending! if (Rails::VERSION::MAJOR >= 4 && Rails::
 # keep the development and test environments in sync. To take advantage of this
 # add the following to the top of the rails_helper file after Rails has been
 # required:
-ActiveRecord::Migration.maintain_test_schema! if (Rails::VERSION::MAJOR >= 4 && Rails::VERSION::MINOR >= 1)
+ActiveRecord::Migration.maintain_test_schema! if (Rails::VERSION::MAJOR >= 4 && Rails::VERSION::MINOR == 1)
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

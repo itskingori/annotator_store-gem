@@ -9,7 +9,7 @@ gemfile:
   - gemfiles/rails_3.2.21.gemfile
   - gemfiles/rails_4.0.12.gemfile
   - gemfiles/rails_4.1.8.gemfile
-  - gemfiles/rails_4.2.0.rc1.gemfile
+  - gemfiles/rails_4.2.0.gemfile
 addons:
   postgresql: '9.3'
 before_script:
