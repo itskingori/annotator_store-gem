@@ -17,7 +17,7 @@ Metrics/LineLength:
 
 Metrics/MethodLength:
   CountComments: false
-  Max: 20
+  Max: 30
 
 Style/NumericLiterals:
   MinDigits: 7
