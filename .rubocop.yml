@@ -9,6 +9,9 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   RunRailsCops: true
 
+Metrics/AbcSize:
+  Max: 60
+
 Metrics/LineLength:
   Enabled: false
 

@@ -23,13 +23,13 @@ Dir["#{support_directory}/**/*.rb"].each { |f| require f }
 # Rails has been required. This will raise an exception if there are any pending
 # schema changes. Users will still be required to manually keep the development
 # and test environments in sync.
-ActiveRecord::Migration.check_pending! if (Rails::VERSION::MAJOR >= 4 && Rails::VERSION::MINOR == 0)
+ActiveRecord::Migration.check_pending! if Rails::VERSION::MAJOR >= 4 && Rails::VERSION::MINOR == 0
 
 # With Rails 4.1+ there was an exciting new feature. Users no longer need to
 # keep the development and test environments in sync. To take advantage of this
 # add the following to the top of the rails_helper file after Rails has been
 # required:
-ActiveRecord::Migration.maintain_test_schema! if (Rails::VERSION::MAJOR >= 4 && Rails::VERSION::MINOR == 1)
+ActiveRecord::Migration.maintain_test_schema! if Rails::VERSION::MAJOR >= 4 && Rails::VERSION::MINOR == 1
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
