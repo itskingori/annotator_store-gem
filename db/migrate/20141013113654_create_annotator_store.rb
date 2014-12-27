@@ -29,7 +29,7 @@ class CreateAnnotatorStore < ActiveRecord::Migration
     # for the different scenarios.
     create_table :annotator_store_ranges do |t|
       if database_type == 'postgres'
-        t.uuid :annotation_id, :uuid, index: true # Associated annotation's UUID
+        t.uuid :annotation_id, index: true # Associated annotation's UUID
       else
         t.references :annotation, index: true     # Associated annotation's normal id
       end
