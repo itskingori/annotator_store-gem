@@ -1,7 +1,7 @@
 Annotator Store Dummy App
 =========================
 
-Rails app used to test the annotator-store Rails engine. This **wasn't/isn't
+Rails app used to test the annotator_store Rails engine. This **wasn't/isn't
 intended to be used in production**.
 
 

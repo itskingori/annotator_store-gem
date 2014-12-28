@@ -2,7 +2,7 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'annotator_store/version'
 
 Gem::Specification.new do |spec|
-  spec.name           = 'annotator-store'
+  spec.name           = 'annotator_store'
   spec.version        = AnnotatorStore::VERSION
   spec.date           = Time.new.getutc.strftime('%Y-%m-%d')
   spec.authors        = ["Job King'ori Maina"]
