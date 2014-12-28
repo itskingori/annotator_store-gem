@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v1.0.0
+------
+
+* Drop complexity brought in by UUIDs
+
+
 v1.0.0.pre
 ----------
 
