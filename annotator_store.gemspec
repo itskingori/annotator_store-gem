@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.date           = Time.new.getutc.strftime('%Y-%m-%d')
   spec.authors        = ["Job King'ori Maina"]
   spec.email          = ['j@kingori.co']
-  spec.homepage       = 'http://itsmrwave.github.io/annotator-store'
+  # spec.homepage       = 'http://itsmrwave.github.io/annotator_store-gem'
   spec.summary        = 'Rails engine to implement a Ruby backend store implementation for Annotator.'
   spec.description    = 'Rails engine to implement a Ruby backend store implementation for Annotator, an open-source JavaScript library to easily add annotation functionality to any webpage.'
   spec.license        = 'MIT'
