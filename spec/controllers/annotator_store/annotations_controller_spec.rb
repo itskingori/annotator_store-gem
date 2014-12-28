@@ -1,6 +1,5 @@
 module AnnotatorStore
   RSpec.describe AnnotationsController, type: :controller do
-
     routes { AnnotatorStore::Engine.routes }
 
     let(:annotation) { FactoryGirl.create :annotator_store_annotation }

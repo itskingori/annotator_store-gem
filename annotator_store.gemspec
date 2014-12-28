@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'faker'
   spec.add_development_dependency 'json-schema'
   spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'rubocop'
 
   # Runtime dependencies
   spec.add_runtime_dependency 'jbuilder'

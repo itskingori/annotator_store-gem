@@ -1,6 +1,5 @@
 module AnnotatorStore
   RSpec.describe PagesController, type: :routing do
-
     routes { AnnotatorStore::Engine.routes }
 
     describe 'routing' do

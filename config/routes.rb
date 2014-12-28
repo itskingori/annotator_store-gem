@@ -1,5 +1,4 @@
 AnnotatorStore::Engine.routes.draw do
-
   # Root path
   root 'pages#index', defaults: { format: :json }
 

@@ -1,6 +1,5 @@
 module AnnotatorStore
   RSpec.describe 'Annotations', type: :request do
-
     let(:annotation) { FactoryGirl.create :annotator_store_annotation }
 
     describe 'POST /annotations' do
