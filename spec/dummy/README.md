@@ -24,7 +24,9 @@ Make sure the user has permissions to create databases. It will handle the rest.
 ### Creation
 
 First create the tables in the database by running `$ bin/rake db:create`. This
-will create 3 tables for each environment:
+will create the table, _dummy_astore_development_. For the test environment you
+have to run it as `bin/rake db:create RAILS_ENV=test` to create
+_dummy_astore_test_.
 
 * _dummy_astore_development_ - used when running the app in development mode.
 * _dummy_astore_test_ - used by the app when running the specs/tests.

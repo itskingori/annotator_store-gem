@@ -78,22 +78,13 @@ And then from the `APP_ROOT` execute:
 
     $ bundle install
 
-Configure your database credentials in `config/database.yml` and then run the
-migrations to create the tables to store the annotations. Depending on the
-database of choice you'll need to set the `DB` environment variable when running
-the migrations. There are slight variations in the structure of the DB when
-using MySQL and PostgreSQL. The default setting is PostgreSQL if not set.
+Configure your database credentials in your `config/database.yml` file and then run the
+migrations to create the tables to store the annotations.
 
     # Copy migrations over from the engine
     $ rake annotator_store:install:migrations
 
-    # To run the copied migration when using MySQL
-    $ DB=mysql rake db:migrate
-
-    # To run the copied migration when using PostgreSQL
-    $ DB=postgres rake db:migrate
-
-    # To run the copied migration without specifying type (defaults to postgres)
+    # To run the copied migration
     $ rake db:migrate
 
 Then mount it in `config/routes.rb`:
@@ -112,7 +103,7 @@ An annotation is a JSON document that contains a number of fields describing the
 position and content of an annotation within a specified document:
 
     {
-      "id": "39fc339cf058bd22176771b3e3187329",  # unique id (added by backend)
+      "id": 1,                                   # unique id (added by backend)
       "annotator_schema_version": "v1.0",        # schema version: default v1.0
       "created": "2011-05-24T18:52:08.036814",   # created datetime in iso8601 format (added by backend)
       "updated": "2011-05-26T12:17:05.012544",   # updated datetime in iso8601 format (added by backend)
@@ -128,9 +119,6 @@ position and content of an annotation within a specified document:
         }
       ]
     }
-
-For PostgreSQL the primary key of the annotation will be a UUID while for MySQL it
-will be a normal integer id.
 
 
 API Endpoints
@@ -192,7 +180,7 @@ Returns (example):
 
     $ curl http://example.com/annotator_store/annotations
     {
-      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "id": 1,
       "text": "Annotation text",
       ...
     }
@@ -208,7 +196,7 @@ Returns (example):
 
     $ curl http://example.com/annotator_store/annotations/d41d8cd98f00b204e9800998ecf8427e
     {
-      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "id": 1,
       "text": "Annotation text",
       ...
     }
@@ -226,7 +214,7 @@ Returns (example):
 
     $ curl http://example.com/annotator_store/annotations/d41d8cd98f00b204e9800998ecf8427e
     {
-      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "id": 1,
       "text": "Annotation text",
       ...
     }
@@ -261,7 +249,7 @@ Returns (example):
       "total": 43127,
       "rows": [
         {
-          "id": "d41d8cd98f00b204e9800998ecf8427e",
+          "id": 1,
           "text": "Updated annotation text",
           ...
         },
