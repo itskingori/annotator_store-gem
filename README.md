@@ -1,8 +1,8 @@
 Annotator Store
 ===============
 
-[![Gem Version](https://badge.fury.io/rb/annotator-store.svg)][5]
-[![Build Status](https://travis-ci.org/itsmrwave/annotator-store.svg?branch=master)][13]
+[![Gem Version](https://badge.fury.io/rb/annotator_store.svg)][5]
+[![Build Status](https://travis-ci.org/itsmrwave/annotator_store-gem.svg?branch=master)][13]
 
 Rails engine to implement a [Ruby on Rails][18] backend store implementation for
 [Annotator][annotator].
@@ -72,15 +72,11 @@ Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'annotator-store'
+    gem 'annotator_store'
 
 And then from the `APP_ROOT` execute:
 
     $ bundle install
-
-Require the engine in `config/application.rb`
-
-    require 'annotator_store'
 
 Configure your database credentials in `config/database.yml` and then run the
 migrations to create the tables to store the annotations. Depending on the
@@ -352,7 +348,7 @@ environment variable to either `mysql` or `postgres` to choose between the two.
 
 Automated tests are configured and set up to [run on Travis-CI][13]. Any push or
 pull request will be built. The `DB` environment variable should be set to
-either `mysql` or `postgres` to create a proper build matrix.
+either `mysql` or `postgres` to create a build matrix with good coverage.
 
 
 Versioning
@@ -366,6 +362,8 @@ Version 1.0.0 defines the public API (implying that it is production ready). The
 way in which the version number is incremented after this release is dependent
 on this public API and how it changes as per [Semantic Versioning
 2.0.0][semver].
+
+All the releases, with their respective changes are [listed here][8].
 
 
 Contributing
@@ -399,18 +397,18 @@ long as they provide attribution and waive liability.
 [2]: http://kingori.co/
 [3]: http://bundler.io/gemfile.html
 [4]: http://bundler.io
-[5]: https://rubygems.org/gems/annotator-store
-[6]: http://rubydoc.info/gems/annotator-store/frames/
-[7]: https://github.com/itsmrwave/annotator-store/blob/master/CHANGELOG.md
-[9]: https://github.com/itsmrwave/annotator-store/blob/master/CONTRIBUTING.md
-[8]: https://github.com/itsmrwave/annotator-store/releases
+[5]: https://rubygems.org/gems/annotator_store
+[6]: http://rubydoc.info/gems/annotator_store/frames/
+[7]: https://github.com/itsmrwave/annotator_store-gem/blob/master/CHANGELOG.md
+[9]: https://github.com/itsmrwave/annotator_store-gem/blob/master/CONTRIBUTING.md
+[8]: https://github.com/itsmrwave/annotator_store-gem/releases
 [10]: http://docs.annotatorjs.org/en/v1.2.x/storage.html
 [11]: http://docs.annotatorjs.org/en/v1.2.x/plugins/store.html
-[12]: https://github.com/itsmrwave/annotator-store/graphs/contributors
-[13]: https://travis-ci.org/itsmrwave/annotator-store
+[12]: https://github.com/itsmrwave/annotator_store-gem/graphs/contributors
+[13]: https://travis-ci.org/itsmrwave/annotator_store-gem
 [14]: https://github.com/itsmrwave/annotator-store-demo
-[15]: https://github.com/itsmrwave/annotator-store/issues/1
+[15]: https://github.com/itsmrwave/annotator_store-gem/issues/1
 [16]: http://rubygems.org/gems/appraisal
 [17]: http://www.rubydoc.info/gems/appraisal
 [18]: http://rubyonrails.org
-[19]: https://github.com/itsmrwave/annotator-store/issues/new
+[19]: https://github.com/itsmrwave/annotator_store-gem/issues/new
