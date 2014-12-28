@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+v1.0.0.pre
+----------
+
+* Rename gem from annotator-store to annotator_store
+* Fix issue with explicit require needed in main application
+
+
 v0.4.0
 ------
 
