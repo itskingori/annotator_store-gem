@@ -2,7 +2,7 @@ require_dependency 'annotator_store/application_controller'
 
 module AnnotatorStore
   class ImageAnnotationsController < ApplicationController
-    before_action :set_image_annotation, only: [:show, :update]
+    before_action :set_image_annotation, only: [:show, :update, :destroy]
 
     # POST /image_annotations
     def create
@@ -30,6 +30,14 @@ module AnnotatorStore
         else
           format.json { render json: @image_annotation.errors, status: :unprocessable_entity }
         end
+      end
+    end
+
+    # DELETE /image_annotations/1
+    def destroy
+      @image_annotation.destroy
+      respond_to do |format|
+        format.json { head :no_content, status: :no_content }
       end
     end
 
