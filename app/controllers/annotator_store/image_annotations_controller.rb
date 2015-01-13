@@ -7,12 +7,9 @@ module AnnotatorStore
     # POST /image_annotations
     def create
       format_annotorious_input_to_rails_convention_for_create
-      puts params[:image_annotation].inspect
       @image_annotation = ImageAnnotation.new image_annotation_params
       respond_to do |format|
         if @image_annotation.save
-          puts @image_annotation.valid?
-          puts @image_annotation.inspect
           format.json { render :show, status: :created, location: image_annotation_url(@image_annotation) }
         else
           format.json { render json: @image_annotation.errors, status: :unprocessable_entity }
@@ -34,7 +31,6 @@ module AnnotatorStore
     # GET /image_annotations/search
     def search
       format_annotorious_input_to_rails_convention_for_search
-      puts search_params.inspect
       @image_annotations = AnnotatorStore::ImageAnnotation.where(search_params)
       @total = @image_annotations.size
     end

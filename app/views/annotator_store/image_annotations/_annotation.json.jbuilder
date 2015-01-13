@@ -7,7 +7,6 @@ json.l do
     json.type image_annotation.shape
     json.units image_annotation.units
     geometry = JSON.parse(image_annotation.geometry)
-    puts geometry.inspect
     json.a do
       json.x geometry['x']
       json.y geometry['y']
