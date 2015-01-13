@@ -1,3 +1,4 @@
+json.id image_annotation.id
 json.url image_annotation.url
 json.text image_annotation.text
 json.ranges []

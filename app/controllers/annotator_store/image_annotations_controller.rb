@@ -2,7 +2,7 @@ require_dependency 'annotator_store/application_controller'
 
 module AnnotatorStore
   class ImageAnnotationsController < ApplicationController
-    before_action :set_image_annotation, only: [:show]
+    before_action :set_image_annotation, only: [:show, :update]
 
     # POST /image_annotations
     def create
@@ -19,6 +19,18 @@ module AnnotatorStore
 
     # GET /image_annotations/1
     def show
+    end
+
+    # PATCH/PUT /image_annotations/1
+    def update
+      format_annotorious_input_to_rails_convention_for_update
+      respond_to do |format|
+        if @image_annotation.update(image_annotation_params)
+          format.json { render :show, status: :ok, location: image_annotation_url(@image_annotation) }
+        else
+          format.json { render json: @image_annotation.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
     # OPTIONS /image_annotations
@@ -70,6 +82,11 @@ module AnnotatorStore
       params[:image_annotation][:units] = 'pixel'
       params[:image_annotation][:shape] = params[:l][0][:type]
       params[:image_annotation][:geometry]   = params[:l][0][:a].to_json.to_s
+    end
+
+    def format_annotorious_input_to_rails_convention_for_update
+      params[:image_annotation] = {}
+      params[:image_annotation][:text] = params[:text]
     end
 
     def format_annotorious_input_to_rails_convention_for_search
