@@ -1,4 +1,5 @@
 json.id image_annotation.id
+json.page_url image_annotation.page_url
 json.url image_annotation.url
 json.text image_annotation.text
 json.ranges []
