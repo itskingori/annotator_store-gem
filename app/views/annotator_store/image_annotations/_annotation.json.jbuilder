@@ -18,6 +18,10 @@ json.l do
   end
 end
 
+# Permissions
+json.user image_annotation.user
+json.permissions image_annotation.permissions
+
 # {
 #   "url": "http://lloydbleekcollection.cs.uct.ac.za/images/stow/STOW_001.JPG",
 #   "text": "sdfdfasdf",

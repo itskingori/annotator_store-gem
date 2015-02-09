@@ -18,6 +18,10 @@ json.ranges do
   end
 end
 
+# Permissions
+json.user annotation.user
+json.permissions annotation.permissions
+
 # Timestamps
 json.created annotation.created_at
 json.updated annotation.updated_at

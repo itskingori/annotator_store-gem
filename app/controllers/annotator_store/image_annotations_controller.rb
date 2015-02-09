@@ -89,12 +89,15 @@ module AnnotatorStore
       params[:image_annotation][:text] = params[:text]
       params[:image_annotation][:units] = 'pixel'
       params[:image_annotation][:shape] = params[:l][0][:type]
-      params[:image_annotation][:geometry]   = params[:l][0][:a].to_json.to_s
+      params[:image_annotation][:geometry] = params[:l][0][:a].to_json.to_s
+      params[:image_annotation][:user] = params[:user]
+      params[:image_annotation][:permissions] = params[:permissions].to_json
     end
 
     def format_annotorious_input_to_rails_convention_for_update
       params[:image_annotation] = {}
       params[:image_annotation][:text] = params[:text]
+      params[:image_annotation][:permissions] = params[:permissions].to_json
     end
 
     def format_annotorious_input_to_rails_convention_for_search
@@ -103,7 +106,7 @@ module AnnotatorStore
     end
 
     def image_annotation_params
-      params.require(:image_annotation).permit(:page_url, :url, :text, :shape, :units, :geometry)
+      params.require(:image_annotation).permit(:page_url, :url, :text, :shape, :units, :geometry, :user, :permissions)
     end
 
     def search_params
