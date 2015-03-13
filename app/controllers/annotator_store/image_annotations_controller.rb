@@ -84,21 +84,21 @@ module AnnotatorStore
     # }
     def format_annotorious_input_to_rails_convention_for_create
       params[:image_annotation] = {}
-      params[:image_annotation][:page_url] = params[:page_url]
-      params[:image_annotation][:url] = params[:url]
-      params[:image_annotation][:text] = params[:text]
+      params[:image_annotation][:page_url] = params[:page_url] unless params[:page_url].blank?
+      params[:image_annotation][:url] = params[:url] unless params[:url].blank?
+      params[:image_annotation][:text] = params[:text] unless params[:text].blank?
       params[:image_annotation][:units] = 'pixel'
-      params[:image_annotation][:shape] = params[:l][0][:type]
-      params[:image_annotation][:geometry] = params[:l][0][:a].to_json.to_s
-      params[:image_annotation][:user] = params[:user]
-      params[:image_annotation][:permissions] = params[:permissions].to_json
-      params[:image_annotation][:upvotes] = params[:upvotes] unless params[:upvotes].blank?
+      params[:image_annotation][:shape] = params[:l][0][:type] unless params[:l].blank?
+      params[:image_annotation][:geometry] = params[:l][0][:a].to_json.to_s unless params[:l].blank?
+      params[:image_annotation][:user] = params[:user] unless params[:user].blank?
+      params[:image_annotation][:permissions] = params[:permissions].to_json unless params[:permissions].blank?
     end
 
     def format_annotorious_input_to_rails_convention_for_update
       params[:image_annotation] = {}
-      params[:image_annotation][:text] = params[:text]
-      params[:image_annotation][:permissions] = params[:permissions].to_json
+      params[:image_annotation][:text] = params[:text] unless params[:text].blank?
+      params[:image_annotation][:permissions] = params[:permissions].to_json unless params[:permissions].blank?
+      params[:image_annotation][:upvotes] = params[:upvotes] unless params[:upvotes].blank?
     end
 
     def format_annotorious_input_to_rails_convention_for_search
