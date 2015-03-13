@@ -22,6 +22,9 @@ end
 json.user annotation.user
 json.permissions annotation.permissions
 
+# Other
+json.upvotes annotation.upvotes
+
 # Timestamps
 json.created annotation.created_at
 json.updated annotation.updated_at

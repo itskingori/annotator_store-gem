@@ -84,6 +84,7 @@ module AnnotatorStore
       params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
       params[:annotation][:permissions] = params[:permissions].to_json unless params[:permissions].blank?
+      params[:annotation][:upvotes] = params[:upvotes] unless params[:upvotes].blank?
     end
 
     # Only allow a trusted parameter 'white list' through.
@@ -95,7 +96,8 @@ module AnnotatorStore
        :version,
        :user,
        :permissions,
-       ranges_attributes: [:start, :end, :start_offset, :end_offset]
+       ranges_attributes: [:start, :end, :start_offset, :end_offset],
+       upvotes: []
       )
     end
   end

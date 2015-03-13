@@ -92,6 +92,7 @@ module AnnotatorStore
       params[:image_annotation][:geometry] = params[:l][0][:a].to_json.to_s
       params[:image_annotation][:user] = params[:user]
       params[:image_annotation][:permissions] = params[:permissions].to_json
+      params[:image_annotation][:upvotes] = params[:upvotes] unless params[:upvotes].blank?
     end
 
     def format_annotorious_input_to_rails_convention_for_update
@@ -106,7 +107,7 @@ module AnnotatorStore
     end
 
     def image_annotation_params
-      params.require(:image_annotation).permit(:page_url, :url, :text, :shape, :units, :geometry, :user, :permissions)
+      params.require(:image_annotation).permit(:page_url, :url, :text, :shape, :units, :geometry, :user, :permissions, upvotes: [])
     end
 
     def search_params
