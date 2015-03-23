@@ -99,9 +99,9 @@ module AnnotatorStore
       params[:image_annotation][:text] = params[:text] unless params[:text].blank?
       params[:image_annotation][:permissions] = params[:permissions].to_json unless params[:permissions].blank?
       if params[:upvotes].blank?
-        params[:annotation][:upvotes] = []
+        params[:image_annotation][:upvotes] = []
       else
-        params[:annotation][:upvotes] = params[:upvotes]
+        params[:image_annotation][:upvotes] = params[:upvotes]
       end
     end
 
