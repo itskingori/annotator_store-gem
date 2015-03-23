@@ -84,7 +84,11 @@ module AnnotatorStore
       params[:annotation][:quote] = params[:quote] unless params[:quote].blank?
       params[:annotation][:uri] = params[:uri] unless params[:uri].blank?
       params[:annotation][:permissions] = params[:permissions].to_json unless params[:permissions].blank?
-      params[:annotation][:upvotes] = params[:upvotes] unless params[:upvotes].blank?
+      if params[:upvotes].blank?
+        params[:annotation][:upvotes] = []
+      else
+        params[:annotation][:upvotes] = params[:upvotes]
+      end
     end
 
     # Only allow a trusted parameter 'white list' through.

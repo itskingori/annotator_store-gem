@@ -98,7 +98,11 @@ module AnnotatorStore
       params[:image_annotation] = {}
       params[:image_annotation][:text] = params[:text] unless params[:text].blank?
       params[:image_annotation][:permissions] = params[:permissions].to_json unless params[:permissions].blank?
-      params[:image_annotation][:upvotes] = params[:upvotes] unless params[:upvotes].blank?
+      if params[:upvotes].blank?
+        params[:annotation][:upvotes] = []
+      else
+        params[:annotation][:upvotes] = params[:upvotes]
+      end
     end
 
     def format_annotorious_input_to_rails_convention_for_search
